@@ -9,7 +9,8 @@ import {
     useColorModeValue
 } from "@chakra-ui/react";
 import IconBox from "components/Icons/IconBox";
-import { CreativeTimLogo } from "components/Icons/Icons";
+//import { CreativeTimLogo } from "components/Icons/Icons";
+import { Milligram1 } from "components/Icons/Icons";
 import { Separator } from "components/Separator/Separator";
 import { SidebarHelp } from "components/Sidebar/SidebarHelp";
 import React from "react";
@@ -183,21 +184,21 @@ const SidebarContent = ({ logoText, routes }) => {
         href={`${process.env.PUBLIC_URL}/#/`}
         target="_blank"
         display="flex"
-        lineHeight="100%"
+        lineHeight="70%"
         mb="30px"
         fontWeight="bold"
         justifyContent="center"
         alignItems="center"
         fontSize="11px"
       >
-        <CreativeTimLogo w="32px" h="32px" me="10px" />
-        <Text fontSize="sm" mt="3px">
+        <Milligram1 w="195px" h="150px" me="0px" ms="2px"/>
+        {/*<Text fontSize="lg" mt="0px" color="white">
           {logoText}
-        </Text>
+  </Text>*/}
       </Link>
-      <Separator></Separator>
+      {/*<Separator></Separator>*/}
     </Box>
-          <Stack direction="column" mb="40px">
+          <Stack direction="column" mb="10px">
             <Box>{links}</Box>
           </Stack>
           <SidebarHelp />
@@ -205,4 +206,4 @@ const SidebarContent = ({ logoText, routes }) => {
   )
 }
 
-export default SidebarContent
+export default SidebarContent;

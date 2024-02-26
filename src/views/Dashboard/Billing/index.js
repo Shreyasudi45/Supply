@@ -1,94 +1,33 @@
-// Chakra imports
-import { Box, Flex, Grid, Icon } from "@chakra-ui/react";
-// Assets
-import BackgroundCard1 from "assets/img/BackgroundCard1.png";
-import { MastercardIcon, VisaIcon } from "components/Icons/Icons";
+import { Flex, Image} from "@chakra-ui/react";
+import blob from "assets/img/blob.jpg";
+import tablets from "assets/img/tablets.jpg";
 import React from "react";
-import { FaPaypal, FaWallet } from "react-icons/fa";
-import { RiMastercardFill } from "react-icons/ri";
-import {
-  billingData,
-  invoicesData,
-  newestTransactions,
-  olderTransactions,
-} from "variables/general";
-import BillingInformation from "./components/BillingInformation";
-import CreditCard from "./components/CreditCard";
-import Invoices from "./components/Invoices";
-import PaymentMethod from "./components/PaymentMethod";
-import PaymentStatistics from "./components/PaymentStatistics";
-import Transactions from "./components/Transactions";
-
+import Problem from "./components/Problem";
+import Problem2 from "./components/Problem2";
 function Billing() {
   return (
     <Flex direction='column' pt={{ base: "120px", md: "75px" }}>
-      <Grid templateColumns={{ sm: "1fr", lg: "2fr 1.2fr" }} templateRows='1fr'>
-        <Box>
-          <Grid
-            templateColumns={{
-              sm: "1fr",
-              md: "1fr 1fr",
-              xl: "1fr 1fr 1fr 1fr",
-            }}
-            templateRows={{ sm: "auto auto auto", md: "1fr auto", xl: "1fr" }}
-            gap='26px'>
-            <CreditCard
-              backgroundImage={BackgroundCard1}
-              title={"Purity UI"}
-              number={"7812 2139 0823 XXXX"}
-              validity={{
-                name: "VALID THRU",
-                data: "05/24",
-              }}
-              cvv={{
-                name: "CVV",
-                code: "09x",
-              }}
-              icon={
-                <Icon
-                  as={RiMastercardFill}
-                  w='48px'
-                  h='auto'
-                  color='gray.400'
-                />
-              }
-            />
-            <PaymentStatistics
-              icon={<Icon h={"24px"} w={"24px"} color='white' as={FaWallet} />}
-              title={"Salary"}
-              description={"Belong interactive"}
-              amount={2000}
-            />
-            <PaymentStatistics
-              icon={<Icon h={"24px"} w={"24px"} color='white' as={FaPaypal} />}
-              title={"Paypal"}
-              description={"Freelance Payment"}
-              amount={4550}
-            />
-          </Grid>
-          <PaymentMethod
-            title={"Payment Method"}
-            mastercard={{
-              icon: <MastercardIcon w='100%' h='100%' />,
-              number: "7812 2139 0823 XXXX",
-            }}
-            visa={{
-              icon: <VisaIcon w='100%' h='100%' />,
-              number: "7812 2139 0823 XXXX",
-            }}
+      <Problem
+      backgroundImage={blob}
+        
+        
+      />
+      
+      <Problem2
+      image={
+          <Image
+            src={tablets}
+            alt='tablets image'
+            minWidth={{ md: "10px" }}
           />
-        </Box>
-        <Invoices title={"Invoices"} data={invoicesData} />
-      </Grid>
-      <Grid templateColumns={{ sm: "1fr", lg: "1.6fr 1.2fr" }}>
-        <BillingInformation title={"Billing Information"} data={billingData} />
-        <Transactions
-          title={"Your Transactions"}
-          date={"23 - 30 March"}
-          newestTransactions={newestTransactions}
-          olderTransactions={olderTransactions}
-        />
-      </Grid>
+        }
+        title={"Costs of medications continue to rise and are out of control. Things are getting worse."}
+        description={"Medicines account for 30-50% of a company’s or government’s total spend on health care."}
+        additionalDescription={"Costs hinder an individual from complying and adhering with their medical regimens and optimal health cannot be realized."}
+        additional1Description={"Innovation and solutions are needed to lessen the spend on medications and health care, in general."}
+  />
+        
+  
     </Flex>
   );
 }

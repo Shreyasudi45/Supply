@@ -1,70 +1,67 @@
-// Chakra imports
-import { Flex, SimpleGrid, Text, useColorModeValue } from "@chakra-ui/react";
-// Custom components
+import {
+  Flex,
+  Text,
+  image,
+  useColorModeValue,
+} from "@chakra-ui/react";
 import Card from "components/Card/Card.js";
 import CardBody from "components/Card/CardBody.js";
-// Custom icons
-import {
-  CartIcon,
-  RocketIcon,
-  StatsIcon,
-  WalletIcon,
-} from "components/Icons/Icons.js";
 import React from "react";
-import ChartStatistics from "./ChartStatistics";
 
-const ActiveUsers = ({ title, percentage, chart }) => {
-  const iconBoxInside = useColorModeValue("white", "white");
+
+const ActiveUsers = ({ backgroundImage, image}) => {
   const textColor = useColorModeValue("gray.700", "white");
+  
   return (
-    <Card p='16px'>
-      <CardBody>
-        <Flex direction='column' w='100%'>
-          {chart}
-          <Flex direction='column' mt='24px' mb='36px' alignSelf='flex-start'>
-            <Text fontSize='lg' color={textColor} fontWeight='bold' mb='6px'>
-              {title}
-            </Text>
-            <Text fontSize='md' fontWeight='medium' color='gray.400'>
-              <Text
-                as='span'
-                color={percentage > 0 ? "green.400" : "red.400"}
-                fontWeight='bold'>
-                {percentage > 0 ? `+${percentage}%` : `-${percentage}%`}
-              </Text>{" "}
-              than last week
-            </Text>
-          </Flex>
-          <SimpleGrid gap={{ sm: "12px" }} columns={4}>
-            <ChartStatistics
-              title={"Users"}
-              amount={"32,984"}
-              percentage={20}
-              icon={<WalletIcon h={"15px"} w={"15px"} color={iconBoxInside} />}
+    <Flex justifyContent="center" alignItems="center" height="100vh">
+    <Card minHeight='400px'  width='80vw' position="relative" borderRadius='0' backgroundImage={`url(${backgroundImage})`} 
+        backgroundSize="cover">
+      <CardBody p='2rem' style={{ marginBottom: '20px' }}>
+        <Flex flexDirection= "column" alignItems="center">
+        {/*<Text fontSize='4xl' color={textColor} fontWeight='bold' textAlign='center' mb='2.5rem' position='relative'>
+            {title}
+            <span
+              style={{
+                display: "block",
+                width: "17%", // Adjust the width to control the length of the underline
+                height: "7px",
+                backgroundColor: useColorModeValue("blue", "white"),
+                margin: "0.5rem auto", // Add margin top for spacing
+                height: "5px",
+              }}
             />
-            <ChartStatistics
-              title={"Clicks"}
-              amount={"2.42m"}
-              percentage={80}
-              icon={<RocketIcon h={"15px"} w={"15px"} color={iconBoxInside} />}
-            />
-            <ChartStatistics
-              title={"Sales"}
-              amount={"2,400$"}
-              percentage={30}
-              icon={<CartIcon h={"15px"} w={"15px"} color={iconBoxInside} />}
-            />
-            <ChartStatistics
-              title={"Items"}
-              amount={"320"}
-              percentage={40}
-              icon={<StatsIcon h={"15px"} w={"15px"} color={iconBoxInside} />}
-            />
-          </SimpleGrid>
+              
+            </Text>*/}
+            <div style={{ position: 'absolute', top: '15%', left: '50%', transform: 'translate(-50%, -50%)', textAlign: 'center', color: "black", zIndex: 1 }}>
+          <h1 style={{ fontSize: "2rem" }}>Milligram Features & Benefits</h1>
+          
+        </div>
+             
+              </Flex>
+              
+              </CardBody>
+              <Flex
+              flexDirection="column"
+            bg='100'
+            align='center'
+            justify='center'
+            borderRadius='15px'
+            position='absolute'
+            top='5px'
+            bottom='-115px'
+            left='50%'
+            transform="translateX(-50%)"
+            p="-2rem"
+            >
+            {image}
+            </Flex>
+          
+            </Card>
+          
         </Flex>
-      </CardBody>
-    </Card>
-  );
+      
+    );
 };
+  
 
 export default ActiveUsers;

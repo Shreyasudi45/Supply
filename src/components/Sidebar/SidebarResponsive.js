@@ -17,7 +17,8 @@ import {
     useDisclosure
 } from "@chakra-ui/react";
 import IconBox from "components/Icons/IconBox";
-import { CreativeTimLogo } from "components/Icons/Icons";
+//import { CreativeTimLogo } from "components/Icons/Icons";
+import { Milligram1 } from "components/Icons/Icons";
 import { Separator } from "components/Separator/Separator";
 import { SidebarHelp } from "components/Sidebar/SidebarHelp";
 import React from "react";
@@ -201,7 +202,7 @@ function SidebarResponsive(props) {
           alignItems="center"
           fontSize="11px"
         >
-          <CreativeTimLogo w="32px" h="32px" me="10px" />
+          <Milligram1 w="32px" h="32px" me="10px" />
           <Text fontSize="sm" mt="3px">
             {logoText}
           </Text>

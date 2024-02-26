@@ -9,11 +9,12 @@ import {
   useColorModeValue,
 } from "@chakra-ui/react";
 import {
-  CreativeTimLogo,
+  //CreativeTimLogo,
   DocumentIcon,
   HomeIcon,
   PersonIcon,
   RocketIcon,
+  MilligramIcon
 } from "components/Icons/Icons";
 import SidebarResponsive from "components/Sidebar/SidebarResponsive";
 import PropTypes from "prop-types";
@@ -79,7 +80,7 @@ export default function AuthNavbar(props) {
       alignItems="center"
       color={mainText}
     >
-      <CreativeTimLogo w="32px" h="32px" me="10px" />
+      <MilligramIcon w="32px" h="32px" me="10px" />
       <Text fontSize="sm" mt="3px">
         {logoText}
       </Text>
@@ -93,7 +94,7 @@ export default function AuthNavbar(props) {
           ms="0px"
           me="0px"
           px="0px"
-          me={{ sm: "2px", md: "16px" }}
+          //me={{ sm: "2px", md: "16px" }}
           color={navbarIcon}
           variant="transparent-with-icon"
           leftIcon={<HomeIcon color={navbarIcon} w="12px" h="12px" me="0px" />}
@@ -107,7 +108,7 @@ export default function AuthNavbar(props) {
           ms="0px"
           me="0px"
           px="0px"
-          me={{ sm: "2px", md: "16px" }}
+          //me={{ sm: "2px", md: "16px" }}
           color={navbarIcon}
           variant="transparent-with-icon"
           leftIcon={
@@ -123,7 +124,7 @@ export default function AuthNavbar(props) {
           ms="0px"
           me="0px"
           px="0px"
-          me={{ sm: "2px", md: "16px" }}
+          //me={{ sm: "2px", md: "16px" }}
           color={navbarIcon}
           variant="transparent-with-icon"
           leftIcon={

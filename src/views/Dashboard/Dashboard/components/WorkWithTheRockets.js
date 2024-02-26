@@ -51,14 +51,14 @@ const WorkWithTheRockets = ({ title, description, backgroundImage }) => {
             <Spacer />
             <Flex align='center' mt={{ sm: "20px", lg: "40px", xl: "90px" }}>
               <Button p='0px' variant='no-hover' bg='transparent' mt='12px'>
-                <Text
+                {/*<Text
                   fontSize='sm'
                   fontWeight='bold'
                   _hover={{ me: "4px" }}
                   transition='all .5s ease'>
                   Read more
-                </Text>
-                <Icon
+  </Text>*/}
+                {/*<Icon
                   as={BsArrowRight}
                   w='20px'
                   h='20px'
@@ -68,7 +68,7 @@ const WorkWithTheRockets = ({ title, description, backgroundImage }) => {
                   cursor='pointer'
                   _hover={{ transform: "translateX(20%)" }}
                   pt='4px'
-                />
+  />*/}
               </Button>
             </Flex>
           </Flex>

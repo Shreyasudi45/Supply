@@ -1,15 +1,13 @@
-// Chakra imports
 import { Flex, Grid, useColorModeValue } from "@chakra-ui/react";
 import avatar4 from "assets/img/avatars/avatar4.png";
 import ProfileBgImage from "assets/img/ProfileBackground.png";
 import React from "react";
-import { FaCube, FaPenFancy } from "react-icons/fa";
-import { IoDocumentsSharp } from "react-icons/io5";
-import Conversations from "./components/Conversations";
+import { PiPencilFill } from "react-icons/pi";
+import { PiBagFill } from "react-icons/pi";
+import { PiCalendarCheckFill } from "react-icons/pi";
 import Header from "./components/Header";
-import PlatformSettings from "./components/PlatformSettings";
 import ProfileInformation from "./components/ProfileInformation";
-import Projects from "./components/Projects";
+import { Link, useHistory } from "react-router-dom"; // Import Link and useHistory
 
 function Profile() {
   // Chakra color mode
@@ -19,48 +17,45 @@ function Profile() {
     "linear-gradient(112.83deg, rgba(255, 255, 255, 0.21) 0%, rgba(255, 255, 255, 0) 110.84%)"
   );
 
+  const history = useHistory(); // Initialize useHistory hook
+
+  const handleEditProfileClick = () => {
+    history.push("/editprofile"); // Navigate to "/editprofile" path
+  };
+
   return (
-    <Flex direction='column'>
+    <Flex direction="column">
       <Header
         backgroundHeader={ProfileBgImage}
         backgroundProfile={bgProfile}
         avatarImage={avatar4}
-        name={"Esthera Jackson"}
-        email={"esthera@simmmple.com"}
+        name={"Jahnavi Nadgir"}
+        email={"janvi@gmail.com"}
         tabs={[
           {
-            name: "OVERVIEW",
-            icon: <FaCube w='100%' h='100%' />,
+            name: "EDIT PROFILE",
+            icon: <PiPencilFill />,
+            onClick: handleEditProfileClick, // Handle click event for Edit Profile tab
           },
           {
-            name: "TEAMS",
-            icon: <IoDocumentsSharp w='100%' h='100%' />,
+            name: "MEDICINE CABINET",
+            icon: <PiBagFill />,
           },
           {
-            name: "PROJECTS",
-            icon: <FaPenFancy w='100%' h='100%' />,
+            name: "MY SUBSCRIPTIONS",
+            icon: <PiCalendarCheckFill />,
           },
         ]}
       />
-      <Grid templateColumns={{ sm: "1fr", xl: "repeat(3, 1fr)" }} gap='22px'>
-        <PlatformSettings
-          title={"Platform Settings"}
-          subtitle1={"ACCOUNT"}
-          subtitle2={"APPLICATION"}
-        />
+      <Grid templateColumns={{ sm: "1fr", xl: "repeat(3, 1fr)" }} gap="22px">
         <ProfileInformation
           title={"Profile Information"}
-          description={
-            "Hi, I’m Esthera Jackson, Decisions: If you can’t decide, the answer is no. If two equally difficult paths, choose the one more painful in the short term (pain avoidance is creating an illusion of equality)."
-          }
-          name={"Esthera Jackson"}
+          name={"Jahnavi Nadgir"}
           mobile={"(44) 123 1234 123"}
-          email={"esthera@simmmple.com"}
-          location={"United States"}
+          email={"janvi@gmail.com"}
+          location={"India"}
         />
-        <Conversations title={"Conversations"} />
       </Grid>
-      <Projects title={"Projects"} description={"Architects design houses"} />
     </Flex>
   );
 }

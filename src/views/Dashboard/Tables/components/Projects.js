@@ -1,63 +1,57 @@
-// Chakra imports
 import {
   Flex,
-  Table,
-  Tbody,
   Text,
-  Th,
-  Thead,
-  Tr,
   useColorModeValue,
 } from "@chakra-ui/react";
-// Custom components
 import Card from "components/Card/Card.js";
 import CardBody from "components/Card/CardBody.js";
-import CardHeader from "components/Card/CardHeader.js";
-import TablesProjectRow from "components/Tables/TablesProjectRow";
 import React from "react";
 
-const Projects = ({ title, captions, data }) => {
+
+const Projects = ({ title,name, description, image}) => {
   const textColor = useColorModeValue("gray.700", "white");
-  return (
-    <Card my='22px' overflowX={{ sm: "scroll", xl: "hidden" }}>
-      <CardHeader p='6px 0px 22px 0px'>
-        <Flex direction='column'>
-          <Text fontSize='lg' color={textColor} fontWeight='bold' pb='.5rem'>
+  return(
+  <Flex justifyContent="center" alignItems="center" height="100vh">
+    <Card minHeight='700px'  width='80vw' position="relative" borderRadius='0' 
+        >
+      <CardBody p='2rem'>
+      <Flex flexDirection= "column" alignItems="center">
+        
+      <Text fontSize='4xl' color={textColor} fontWeight='bold' textAlign='center' mb='2.5rem' position='relative'>
             {title}
-          </Text>
+            
+            </Text>
+        
+        <Text fontSize='md' color={textColor} fontWeight='bold' fontStyle='italic' pb='2rem' textAlign="flex-end">
+              {name}
+            </Text>
+            <Text fontSize='sm' color={textColor} fontWeight='normal' textAlign="left" >
+              {description}
+              
+              </Text>
+              </Flex>
+        </CardBody>
+              
+              <Flex
+              flexDirection="column"
+              bg='100'
+              align='center'
+              justify='center'
+              borderRadius='15px'
+              position='absolute'
+              top='240px'
+              bottom='-115px'
+              left='50%'
+              transform="translateX(-50%)"
+              p="-2rem"
+              >
+              {image}
+            
+            </Flex>
+        </Card>
         </Flex>
-      </CardHeader>
-      <CardBody>
-        <Table variant='simple' color={textColor}>
-          <Thead>
-            <Tr my='.8rem' pl='0px'>
-              {captions.map((caption, idx) => {
-                return (
-                  <Th color='gray.400' key={idx} ps={idx === 0 ? "0px" : null}>
-                    {caption}
-                  </Th>
-                );
-              })}
-            </Tr>
-          </Thead>
-          <Tbody>
-            {data.map((row) => {
-              return (
-                <TablesProjectRow
-                  key={row.name}
-                  name={row.name}
-                  logo={row.logo}
-                  status={row.status}
-                  budget={row.budget}
-                  progression={row.progression}
-                />
-              );
-            })}
-          </Tbody>
-        </Table>
-      </CardBody>
-    </Card>
-  );
+        );
 };
+  
 
 export default Projects;
