@@ -6,6 +6,7 @@ import {
     Link,
     Stack,
     Text,
+    useColorMode,
     useColorModeValue
 } from "@chakra-ui/react";
 import IconBox from "components/Icons/IconBox";
@@ -23,6 +24,7 @@ const SidebarContent = ({ logoText, routes }) => {
 
     // to check for active links and opened collapses
   let location = useLocation();
+  const { colorMode } = useColorMod
   // this is for the rest of the collapses
   const [state, setState] = React.useState({});
 
@@ -74,7 +76,9 @@ const SidebarContent = ({ logoText, routes }) => {
               boxSize="initial"
               justifyContent="flex-start"
               alignItems="center"
-              bg={activeBg}
+              bg={activeRoute(prop.layout + prop.path) === "active"
+              ? activeBg
+              : "transparent"}
               mb={{
                 xl: "12px",
               }}
@@ -97,14 +101,27 @@ const SidebarContent = ({ logoText, routes }) => {
               _focus={{
                 boxShadow: "none",
               }}
+              color={
+                activeRoute(prop.layout + prop.path) === "active"
+                  ? activeColor
+                  : inactiveColor
+              }
             >
               <Flex>
                 {typeof prop.icon === "string" ? (
                   <Icon>{prop.icon}</Icon>
                 ) : (
                   <IconBox
-                    bg="teal.300"
-                    color="white"
+                    bg={
+                      activeRoute(prop.layout + prop.path) === "active"
+                        ? "teal.300"
+                        : inactiveBg
+                    }
+                    color={
+                      activeRoute(prop.layout + prop.path) === "active"
+                        ? "white"
+                        : "teal.300"
+                    }
                     h="30px"
                     w="30px"
                     me="12px"
