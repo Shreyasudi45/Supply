@@ -1,28 +1,58 @@
 // Chakra imports
+import React, {useState} from "react";
+import { Link } from "react-router-dom";
+import axios from "axios";
 import {
   Box,
   Button,
   Flex,
   FormControl,
   FormLabel,
-  HStack,
-  Icon,
   Input,
-  Link,
+  Link as ChakraLink,
   Switch,
   Text,
-  useColorModeValue,
+  useColorMode,
 } from "@chakra-ui/react";
 // Assets
-import BgSignUp from "assets/img/BgSignUp.png";
-import React from "react";
-import { FaApple, FaFacebook, FaGoogle } from "react-icons/fa";
+import bluebg from "assets/img/bluebg.jpg";
+
 
 function SignUp() {
-  const titleColor = useColorModeValue("teal.300", "teal.200");
-  const textColor = useColorModeValue("gray.700", "white");
-  const bgColor = useColorModeValue("white", "gray.700");
-  const bgIcons = useColorModeValue("teal.200", "rgba(255, 255, 255, 0.5)");
+  const { colorMode } = useColorMode();
+  const titleColor = colorMode === 'light' ? "#60beeb" : "#000000";
+  const textColor =colorMode === 'light' ? "gray.700" : "#ffffff";
+  const bgColor = colorMode === 'light' ? "white" : "#2d3748";
+  //const bgIcons = useColorModeValue("#60beeb", "rgb(96, 190, 235)");
+
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
+  });
+  const [userDetails, setUserDetails] = useState(null);
+  const handleInputChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleFormSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      // Send registration data to the backend
+      const response = await axios.post("https://hcaapi.kairosrp.com/api/register", formData);
+      // Handle successful registration (you can update UI or redirect here)
+      console.log("Registration successful:", response.data);
+      
+    } catch (error) {
+      // Handle registration failure (you can display an error message)
+      console.error("Registration failed:", error);
+    }
+  };
+  const rememberMe = true;
   return (
     <Flex
       direction='column'
@@ -40,7 +70,7 @@ function SignUp() {
         overflow='hidden'
         zIndex='-1'
         top='0'
-        bgImage={BgSignUp}
+        bgImage={bluebg}
         bgSize='cover'
         mx={{ md: "auto" }}
         mt={{ md: "14px" }}></Box>
@@ -51,7 +81,7 @@ function SignUp() {
         align='center'
         mt='6.5rem'
         mb='30px'>
-        <Text fontSize='4xl' color='white' fontWeight='bold'>
+        <Text fontSize='6xl' color='white' fontWeight='bold'>
           Welcome!
         </Text>
       </Flex>
@@ -71,74 +101,7 @@ function SignUp() {
             fontWeight='bold'
             textAlign='center'
             mb='22px'>
-            Register With
-          </Text>
-          <HStack spacing='15px' justify='center' mb='22px'>
-            <Flex
-              justify='center'
-              align='center'
-              w='75px'
-              h='75px'
-              borderRadius='15px'
-              border='1px solid lightgray'
-              cursor='pointer'
-              transition='all .25s ease'
-              _hover={{ filter: "brightness(120%)", bg: bgIcons }}>
-              <Link href='#'>
-                <Icon
-                  as={FaFacebook}
-                  w='30px'
-                  h='30px'
-                  _hover={{ filter: "brightness(120%)" }}
-                />
-              </Link>
-            </Flex>
-            <Flex
-              justify='center'
-              align='center'
-              w='75px'
-              h='75px'
-              borderRadius='15px'
-              border='1px solid lightgray'
-              cursor='pointer'
-              transition='all .25s ease'
-              _hover={{ filter: "brightness(120%)", bg: bgIcons }}>
-              <Link href='#'>
-                <Icon
-                  as={FaApple}
-                  w='30px'
-                  h='30px'
-                  _hover={{ filter: "brightness(120%)" }}
-                />
-              </Link>
-            </Flex>
-            <Flex
-              justify='center'
-              align='center'
-              w='75px'
-              h='75px'
-              borderRadius='15px'
-              border='1px solid lightgray'
-              cursor='pointer'
-              transition='all .25s ease'
-              _hover={{ filter: "brightness(120%)", bg: bgIcons }}>
-              <Link href='#'>
-                <Icon
-                  as={FaGoogle}
-                  w='30px'
-                  h='30px'
-                  _hover={{ filter: "brightness(120%)" }}
-                />
-              </Link>
-            </Flex>
-          </HStack>
-          <Text
-            fontSize='lg'
-            color='gray.400'
-            fontWeight='bold'
-            textAlign='center'
-            mb='22px'>
-            or
+            Register 
           </Text>
           <FormControl>
             <FormLabel ms='4px' fontSize='sm' fontWeight='normal'>
@@ -152,6 +115,9 @@ function SignUp() {
               placeholder='Your full name'
               mb='24px'
               size='lg'
+              name='name'
+              value={formData.name}
+              onChange={handleInputChange}
             />
             <FormLabel ms='4px' fontSize='sm' fontWeight='normal'>
               Email
@@ -164,6 +130,9 @@ function SignUp() {
               placeholder='Your email address'
               mb='24px'
               size='lg'
+              name='email'
+              value={formData.email}
+              onChange={handleInputChange}
             />
             <FormLabel ms='4px' fontSize='sm' fontWeight='normal'>
               Password
@@ -176,27 +145,46 @@ function SignUp() {
               placeholder='Your password'
               mb='24px'
               size='lg'
+              name='password'
+              value={formData.password}
+              onChange={handleInputChange}
             />
-            <FormControl display='flex' alignItems='center' mb='24px'>
-              <Switch id='remember-login' colorScheme='teal' me='10px' />
+            <FormLabel ms='4px' fontSize='sm' fontWeight='normal'>
+              Confirm Password
+            </FormLabel>
+            <Input
+              fontSize='sm'
+              ms='4px'
+              borderRadius='15px'
+              type='password'
+              placeholder='Confirm password'
+              mb='24px'
+              size='lg'
+              name='confirmPassword'
+              value={formData.confirmPassword}
+              onChange={handleInputChange}
+            />
+            <FormControl display='flex' alignItems='center' mb='24px' >
+              <Switch id='remember-login' colorScheme='blue' me='10px' isChecked={rememberMe} />
               <FormLabel htmlFor='remember-login' mb='0' fontWeight='normal'>
                 Remember me
               </FormLabel>
             </FormControl>
             <Button
               type='submit'
-              bg='teal.300'
-              fontSize='10px'
+              bg='#60beeb'
+              fontSize='17px'
               color='white'
               fontWeight='bold'
               w='100%'
               h='45'
               mb='24px'
+              onClick={handleFormSubmit}
               _hover={{
-                bg: "teal.200",
+                bg: "#60beeb",
               }}
               _active={{
-                bg: "teal.400",
+                bg: "#60beeb",
               }}>
               SIGN UP
             </Button>
@@ -208,14 +196,14 @@ function SignUp() {
             maxW='100%'
             mt='0px'>
             <Text color={textColor} fontWeight='medium'>
-              Already have an account?
-              <Link
+              Already have an account ?{" "}
+             <Link 
+                to="/signin"
                 color={titleColor}
                 as='span'
                 ms='5px'
-                href='#'
                 fontWeight='bold'>
-                Sign In
+                Login
               </Link>
             </Text>
           </Flex>
@@ -226,3 +214,4 @@ function SignUp() {
 }
 
 export default SignUp;
+
