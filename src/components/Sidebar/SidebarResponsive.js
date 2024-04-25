@@ -185,7 +185,7 @@ function SidebarResponsive(props) {
     var links = <>{createLinks(routes)}</>;
     //  BRAND
     //  Chakra Color Mode
-    let hamburgerColor = useColorModeValue("gray.500", "gray.200");
+    let hamburgerColor = "gray.500";
     if (props.secondary === true) {
       hamburgerColor = "white";
     }
