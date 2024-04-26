@@ -62,7 +62,8 @@ const LoadPatientData = () => {
              {/* Breadcrumbs */}
        <Flex justifyContent="center" mb={3}>
         <Text fontSize="lg" color="white">
-          <Link to="/">Load Patient Data</Link> / Dashboard 
+          <Link to="/">Load Patient Data</Link> 
+          <Link to="/builtbydevelopers"> / Dashboard</Link>
         </Text>
       </Flex>
             <MenuList>
@@ -90,9 +91,9 @@ const LoadPatientData = () => {
         {/* Right side */}
         <Box>
           <Menu>
-            <MenuButton as={Button} variant="outline" colorScheme="whiteAlpha">
+            <MenuButton >
               <Avatar size="sm" name="User Name" mr={2} />
-              <Text color="white" mr={2}>User</Text>
+              
             </MenuButton>
             <MenuList>
               <MenuItem>
