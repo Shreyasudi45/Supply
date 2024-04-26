@@ -77,7 +77,8 @@ const PatientScreeningRoster = () => {
              {/* Breadcrumbs */}
        <Flex justifyContent="center" mb={3}>
         <Text fontSize="lg" color="white">
-          <Link to="/">Patient Screening Roster</Link> / Dashboard 
+          <Link to="/">Patient Screening Roster</Link> 
+          <Link to="/builtbydevelopers"> / Dashboard</Link>
         </Text>
       </Flex>
             <MenuList>
@@ -105,9 +106,9 @@ const PatientScreeningRoster = () => {
         {/* Right side */}
         <Box>
           <Menu>
-            <MenuButton as={Button} variant="outline" colorScheme="whiteAlpha">
+            <MenuButton >
               <Avatar size="sm" name="User Name" mr={2} />
-              <Text color="white" mr={2}>User</Text>
+             
             </MenuButton>
             <MenuList>
               <MenuItem>
@@ -120,6 +121,7 @@ const PatientScreeningRoster = () => {
       </Flex>
       <Text textAlign="center" fontSize="5xl" mt={3} color="#60beeb">Patient Screening Roster</Text>
       {/* Data Table */}
+      <Flex justifyContent="center" mt={6}>
       <Box width="98%" overflowX="auto" mt={6}>
         <Table variant="striped" colorScheme="gray">
           <Thead>
@@ -168,7 +170,7 @@ const PatientScreeningRoster = () => {
             </Table>
             </Box>
             
-        
+        </Flex>
             
     </Flex>
     
