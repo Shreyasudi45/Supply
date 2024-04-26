@@ -122,9 +122,9 @@ const BuiltByDevelopers = () => {
         {/* Right side */}
         <Box>
           <Menu>
-            <MenuButton as={Button} variant="outline" colorScheme="whiteAlpha">
+            <MenuButton>
               <Avatar size="sm" name="User Name" mr={2} />
-              <Text color="white" mr={2}>User</Text>
+              
             </MenuButton>
             <MenuList>
               <MenuItem>
