@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-
+import { useHistory } from 'react-router-dom'; 
 
 const indianStatesList = [
   "Andhra Pradesh", "Arunachal Pradesh", "Assam", "Bihar", "Chhattisgarh", "Goa", "Gujarat", "Haryana", "Himachal Pradesh", 
@@ -41,7 +41,7 @@ const AddMoreDetails = () => {
     physicianPhone: '',
     physicianFax: ''
   });
-
+  const history = useHistory();
   const handleChange = (e) => {
     const { name, value } = e.target;
     setDetails(prevState => ({
@@ -71,7 +71,10 @@ const AddMoreDetails = () => {
     // Simply set the page state to 2 to navigate to the second page
     setPage(2);
 };
-
+const handleSave = () => {
+  
+  history.push('/builtbydevelopers'); 
+};
   const days = Array.from({ length: 31 }, (_, i) => i + 1); // Generate days 1 to 31
   const years = Array.from({ length: 120 }, (_, i) => new Date().getFullYear() - i); // Generate years from current year to 120 years ago
 
@@ -90,7 +93,7 @@ const AddMoreDetails = () => {
     <div>
         {page === 1 && (
             <div>
-      <h1 style={{ textAlign: 'center', color: '#60beeb', fontSize: '45px'}}>Add More Details - 1</h1>
+      <h1 style={{ textAlign: 'center', color: '#60beeb', fontSize: '45px'}}>Add More Details</h1>
       <form style={{ display: 'flex', flexDirection: 'column', alignItems: 'start', marginLeft: '400px', marginTop: '30px' }}>
         <div style={{ marginBottom: '15px' }}>
           <label htmlFor="phone">Phone</label>
@@ -155,14 +158,14 @@ const AddMoreDetails = () => {
           <label>Sex</label>
           <br />
           
-              <label>
+              <label  style={{ marginRight: '15px' }}>
                 <input type="radio" name="sex" value="male" onChange={handleChange} />
-                M
+                <span style={{ marginLeft: '5px' }}>M</span>
               </label>
               <span style={{ margin: '0 15px' }}></span>
               <label>
                 <input type="radio" name="sex" value="female" onChange={handleChange} />
-                F
+                <span style={{ marginLeft: '5px' }}>F</span>
               </label>
             </div>
             <div style={{ marginBottom: '15px' }}>
@@ -223,20 +226,20 @@ const AddMoreDetails = () => {
           
               <label>
                 <input type="radio" name="diabetes" value="E11.9" onChange={handleChange} />
-                E11.9
+                <span style={{ marginLeft: '5px' }}>E11.9</span>
               </label>
               </div>
               <div style={{ marginBottom: '5px' }}></div>
               <div>
               <label>
                 <input type="radio" name="diabetes" value="E10.9" onChange={handleChange} />
-                E10.9
+                <span style={{ marginLeft: '5px' }}>E10.9</span>
               </label>
               </div>
               <div>
               <label>
                 <input type="radio" name="diabetes" value="other" onChange={handleChange} />
-               Other:
+                <span style={{ marginLeft: '5px' }}>Other:</span>
               </label>
               {details.diabetes === 'other' && (
                 <div>
@@ -260,42 +263,42 @@ const AddMoreDetails = () => {
           
               <label>
                 <input type="checkbox" name="coditions" value=" History of partial or complete amputation of the foot (S98)" onChange={handleChange} />
-               History of partial or complete amputation of the foot (S98)
+                <span style={{ marginLeft: '5px' }}>History of partial or complete amputation of the foot (S98)</span>
               </label>
               </div>
               <div style={{ marginBottom: '5px' }}></div>
               <div>
               <label>
                 <input type="checkbox" name="conditions" value="History of previous foot ulceration (Z86.31)" onChange={handleChange} />
-               History of previous foot ulceration (Z86.31)
+                <span style={{ marginLeft: '5px' }}>History of previous foot ulceration (Z86.31)</span>
               </label>
               </div>
               <div style={{ marginBottom: '5px' }}></div>
               <div>
               <label>
                 <input type="checkbox" name="conditions" value=" History of Pre-ulcerative callus (L84)" onChange={handleChange} />
-               History of Pre-ulcerative callus (L84)
+                <span style={{ marginLeft: '5px' }}>History of Pre-ulcerative callus (L84)</span>
               </label>
               </div>
               <div style={{ marginBottom: '5px' }}></div>
               <div>
               <label>
                 <input type="checkbox" name="conditions" value=" Foot deformity (M20.60 or M21.969)" onChange={handleChange} />
-              Foot deformity (M20.60 or M21.969)
+                <span style={{ marginLeft: '5px' }}>Foot deformity (M20.60 or M21.969)</span>
               </label>
               </div>
               <div style={{ marginBottom: '5px' }}></div>
               <div>
               <label>
                 <input type="checkbox" name="conditions" value="Poor Circulation (I99.8)" onChange={handleChange} />
-              Poor Circulation (I99.8)
+                <span style={{ marginLeft: '5px' }}>Poor Circulation (I99.8)</span>
               </label>
               </div>
               <div style={{ marginBottom: '5px' }}></div>
               <div>
               <label>
                 <input type="checkbox" name="conditions" value="Peripheral neuropathy with evidence of callus formation (G57)" onChange={handleChange} />
-              Peripheral neuropathy with evidence of callus formation (G57)
+                <span style={{ marginLeft: '5px' }}> Peripheral neuropathy with evidence of callus formation (G57)</span>
               </label>
               </div>
               </div>
@@ -314,7 +317,7 @@ const AddMoreDetails = () => {
 )}
         {page === 2 && (
                 <div>
-                    <h1 style={{ textAlign: 'center', color: '#60beeb', fontSize: '45px'}}>Add More Details - 2</h1>
+                    <h1 style={{ textAlign: 'center', color: '#60beeb', fontSize: '45px'}}>Add More Details</h1>
                     <form style={{ display: 'flex', flexDirection: 'column', alignItems: 'start', marginLeft: '400px', marginRight: '447px', marginTop: '30px' }}>
                     <div style={{ marginBottom: '20px' }}>
                     <p>I am treating this patient under a comprehensive plan for his/her diabetes and by signing below. I certify that it is medically necessary for the above named patient to receive:</p>
@@ -380,11 +383,10 @@ const AddMoreDetails = () => {
           <br />
           <input type="text" id="physicianFax" name="physicianFax" value={details.physicianFax} onChange={handleChange} style={{ width: '7500px', marginTop: '8px', border: '1px solid #000', width: '750px', padding: '5px' }}  />
         </div>
-        <div style={{ display: 'flex', justifyContent: 'center', marginTop: '20px' }}>
-      <div style={{ marginRight: '10px' }}>
-           <p style={{ textAlign: 'center', marginTop: '20px', marginBottom: '25px' }}> {page}</p>
-        </div>
-        </div>
+        <button type="button" onClick={handleSave} style={{ backgroundColor: '#60beeb', color: 'white', border: 'none', padding: '10px 20px', borderRadius: '5px', cursor: 'pointer' }}>
+                            Save
+                        </button>
+        
                     </form>
                 </div>
             )}
