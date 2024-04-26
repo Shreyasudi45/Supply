@@ -90,7 +90,8 @@ const ActiveUsers = () => {
             {/* Breadcrumbs */}
        <Flex justifyContent="center" mb={3}>
         <Text fontSize="lg" color="white">
-          <Link to="/">Create Order</Link> / Dashboard
+          <Link to="/">Create Order</Link> 
+          <Link to="/builtbydevelopers"> / Dashboard</Link>
         </Text>
       </Flex>
             <MenuList>
@@ -118,9 +119,9 @@ const ActiveUsers = () => {
         {/* Right side */}
         <Box>
           <Menu>
-            <MenuButton as={Button} variant="outline" colorScheme="whiteAlpha">
+            <MenuButton >
               <Avatar size="sm" name="User Name" mr={2} />
-              <Text color="white" mr={2}>User</Text>
+              
             </MenuButton>
             <MenuList>
               <MenuItem>
@@ -250,10 +251,10 @@ const ActiveUsers = () => {
       {/* Buttons */}
       <Flex justifyContent="center" mt={4}>
         <Button onClick={handleCancel} variant="outline" mr={16} color="#60beeb"
-  borderColor="#60beeb" width="140px" >CANCEL</Button>
-        <Button onClick={handleClearAll} variant="outline" mr={16} color="#60beeb"  borderColor="#60beeb"  width="140px">CLEAR ALL</Button>
+  borderColor="#60beeb" width="160px" >CANCEL</Button>
+        <Button onClick={handleClearAll} variant="outline" mr={16} color="#60beeb"  borderColor="#60beeb"  width="160px">CLEAR ALL</Button>
         <Button onClick={handleAddMoreDetails} variant="outline" mr={16}  width="160px" style={{ backgroundColor: '#60beeb', color: 'white' }}>ADD MORE DETAILS</Button>
-        <Button onClick={handleSubmit}  width="140px" style={{ backgroundColor: '#60beeb', color: 'white' }}>SUBMIT</Button>
+        <Button onClick={handleSubmit}  width="160px" style={{ backgroundColor: '#60beeb', color: 'white' }}>SUBMIT</Button>
       </Flex>
     </Flex>
     
