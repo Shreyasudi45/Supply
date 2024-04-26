@@ -1,6 +1,6 @@
 // Chakra imports
 import React, {useState} from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory} from "react-router-dom";
 import axios from "axios";
 import {
   Box,
@@ -19,19 +19,18 @@ import bluebg from "assets/img/bluebg.jpg";
 
 
 function SignUp() {
-  const { colorMode } = useColorMode();
+  const { colorMode } = useColorMode                                                                                         ();
   const titleColor = colorMode === 'light' ? "#60beeb" : "#000000";
   const textColor =colorMode === 'light' ? "gray.700" : "#ffffff";
   const bgColor = colorMode === 'light' ? "white" : "#2d3748";
-  //const bgIcons = useColorModeValue("#60beeb", "rgb(96, 190, 235)");
-
+  
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     password: "",
     confirmPassword: "",
   });
-  const [userDetails, setUserDetails] = useState(null);
+  
   const handleInputChange = (e) => {
     setFormData({
       ...formData,
@@ -42,17 +41,18 @@ function SignUp() {
   const handleFormSubmit = async (e) => {
     e.preventDefault();
     try {
-      // Send registration data to the backend
-      const response = await axios.post("https://hcaapi.kairosrp.com/api/register", formData);
-      // Handle successful registration (you can update UI or redirect here)
-      console.log("Registration successful:", response.data);
       
+      const response = await axios.post("https://hcaapi.kairosrp.com/api/register", formData);
+      
+      console.log("Registration successful:", response.data);
+      history.push("/signin");
     } catch (error) {
-      // Handle registration failure (you can display an error message)
+      
       console.error("Registration failed:", error);
     }
   };
   const rememberMe = true;
+  const history = useHistory();
   return (
     <Flex
       direction='column'
@@ -214,4 +214,3 @@ function SignUp() {
 }
 
 export default SignUp;
-
