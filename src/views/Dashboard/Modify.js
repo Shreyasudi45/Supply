@@ -44,7 +44,7 @@ const Modify = () => {
   };
 
   const handleUpdateMoreDetails = () => {
-    console.log("Add more details clicked");
+    history.push("/updatemoredetails");
   };
 
   const handleSubmit = () => {
@@ -84,7 +84,8 @@ const Modify = () => {
             {/* Breadcrumbs */}
        <Flex justifyContent="center" mb={3}>
         <Text fontSize="lg" color="white">
-          <Link to="/">Modify Order</Link> / Dashboard
+          <Link to="/">Modify Order</Link>
+          <Link to="/builtbydevelopers"> / Dashboard</Link>
         </Text>
       </Flex>
             <MenuList>
@@ -112,9 +113,9 @@ const Modify = () => {
         {/* Right side */}
         <Box>
           <Menu>
-            <MenuButton as={Button} variant="outline" colorScheme="whiteAlpha">
+            <MenuButton >
               <Avatar size="sm" name="User Name" mr={2} />
-              <Text color="white" mr={2}>User</Text>
+              
             </MenuButton>
             <MenuList>
               <MenuItem>
@@ -243,10 +244,10 @@ const Modify = () => {
       {/* Buttons */}
       <Flex justifyContent="center" mt={4}>
         <Button onClick={handleCancel} variant="outline" mr={16} color="#60beeb"
-  borderColor="#60beeb" width="140px" >CANCEL</Button>
-        <Button onClick={handleDeleteProfile} variant="outline" mr={16} color="red"  borderColor="red"  width="140px">DELETE PROFILE</Button>
+  borderColor="#60beeb" width="180px" >CANCEL</Button>
+        <Button onClick={handleDeleteProfile} variant="outline" mr={16} color="red"  borderColor="red"  width="180px">DELETE PROFILE</Button>
         <Button onClick={handleUpdateMoreDetails} variant="outline" mr={16}  width="180px" style={{ backgroundColor: '#60beeb', color: 'white' }}>UPDATE MORE DETAILS</Button>
-        <Button onClick={handleSubmit}  width="140px" style={{ backgroundColor: '#60beeb', color: 'white' }}>SUBMIT</Button>
+        <Button onClick={handleSubmit}  width="180px" style={{ backgroundColor: '#60beeb', color: 'white' }}>SUBMIT</Button>
       </Flex>
     </Flex>
     
