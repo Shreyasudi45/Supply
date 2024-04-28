@@ -47,8 +47,7 @@ const UserList = () => {
     // Update the state with the filtered orders
    
   const handleLogout = () => {
-    // Perform logout actions, e.g., clear session/local storage, etc.
-    // Then navigate to the sign-in page
+    
     history.push("/signin");
   };
 
@@ -71,7 +70,8 @@ const UserList = () => {
              {/* Breadcrumbs */}
        <Flex justifyContent="center" mb={3}>
         <Text fontSize="lg" color="white">
-          <Link to="/">User List</Link> / Dashboard 
+          <Link to="/">User List</Link> 
+          <Link to="/builtbydevelopers"> / Dashboard</Link>
         </Text>
       </Flex>
             <MenuList>
@@ -82,7 +82,7 @@ const UserList = () => {
                 <Link to="/loadpatientdata">Load Data</Link>
               </MenuItem>
               <MenuItem>
-                <Link to="/patientscreeningroster">Upload Facesheet</Link>
+                <Link to="/patientscreeningroster">Patient Screening Roster</Link>
               </MenuItem>
               <MenuItem>
                 <Link to="/dashboard/profile">Send to Billing</Link>
@@ -99,9 +99,9 @@ const UserList = () => {
         {/* Right side */}
         <Box>
           <Menu>
-            <MenuButton as={Button} variant="outline" colorScheme="whiteAlpha">
+            <MenuButton >
               <Avatar size="sm" name="User Name" mr={2} />
-              <Text color="white" mr={2}>User</Text>
+              
             </MenuButton>
             <MenuList>
               <MenuItem>
@@ -113,7 +113,13 @@ const UserList = () => {
         </Box>
       </Flex>
       <Text textAlign="center" fontSize="5xl" mt={3} color="#60beeb">User List</Text>
+      <Box ml="auto" mt={3} mr={7}>
+        <Button colorScheme="blue" size="md" style={{ backgroundColor: '#60beeb', color: 'white' }}>
+            Create User
+          </Button>
+        </Box>
       {/* Data Table */}
+      <Flex justifyContent="center" mt={6}>
       <Box width="98%" overflowX="auto" mt={6}>
         <Table variant="striped" colorScheme="gray">
           <Thead>
@@ -154,7 +160,7 @@ const UserList = () => {
             </Box>
             
         
-            
+      </Flex>      
     </Flex>
     
     
