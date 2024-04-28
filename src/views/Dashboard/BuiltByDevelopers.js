@@ -172,7 +172,7 @@ const BuiltByDevelopers = () => {
         {/* Create Order Button */}
       <Box ml="auto" mt={3}>
         <Link to="/activeusers">
-          <Button colorScheme="blue" size="md" style={{ backgroundColor: '#60beeb', color: 'white' }}>
+          <Button colorScheme="blue" size="md" style={{ backgroundColor: '#60beeb', color: 'white'  }}>
             Create Patient
           </Button>
         </Link>
