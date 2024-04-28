@@ -89,7 +89,7 @@ const PatientScreeningRoster = () => {
                 <Link to="/loadpatientdata">Load Data</Link>
               </MenuItem>
               <MenuItem>
-                <Link to="/patientscreeningroster">Upload Facesheet</Link>
+                <Link to="/patientscreeningroster">Patient Screening Roster</Link>
               </MenuItem>
               <MenuItem>
                 <Link to="/dashboard/profile">Send to Billing</Link>
