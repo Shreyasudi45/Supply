@@ -1,8 +1,8 @@
 {
-	"name": "purity-dashboard-react",
+	"name": "supply-2",
 	"version": "2.0.2",
 	"private": true,
-	"homepage": "https://demos.creative-tim.com/purity-ui-dashboard/#/",
+	"homepage": "https://demos.creative-tim.com/supply-2/#/",
 	"dependencies": {
 		"@chakra-ui/icons": "^1.1.7",
 		"@chakra-ui/react": "^1.8.8",
