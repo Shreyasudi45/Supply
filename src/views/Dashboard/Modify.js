@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Flex, Box, Menu, MenuButton, MenuItem, MenuList, Button, Avatar, Text, Icon, Grid, GridItem, Input, Link as ChakraLINk } from "@chakra-ui/react";
+import { Flex, Box, Menu, MenuButton, MenuItem, MenuList, Button, Avatar, Text, Icon, Grid, GridItem, Input, Link as ChakraLink } from "@chakra-ui/react";
 import { FaBars } from 'react-icons/fa';
 import { Link, useHistory  } from "react-router-dom";
 
