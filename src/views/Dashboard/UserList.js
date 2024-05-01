@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import axios from "axios";
 import { Link, useLocation, useHistory } from "react-router-dom";
 import {
   Box,
@@ -18,33 +19,46 @@ import {
   Th,
   Td,
   Icon,
+  Link as ChakraLink,
 } from "@chakra-ui/react";
 import { FaBars, FaSearch, FaEdit, FaTrash } from 'react-icons/fa';
 
 const UserList = () => {
-  
-  const [formData, setFormData] = useState({});
-  const [orders, setOrders] = useState([
+  const [users, setUsers] = useState([
     {
-      
       firstName: "John",
       lastName: "Doe",
       email: "abc@gmail.com",
-      role: "Doctor",
-      
-      
+      role: "Consultant",
     },
   ]);
-
-  const location = useLocation();
+  const location = useLocation(); 
   const history = useHistory();
 
-  const handleDeleteOrder = (index) => {
-    const updatedOrders = [...orders];
-    updatedOrders.splice(index, 1);
-    setOrders(updatedOrders);
+  useEffect(() => {
+    // Fetch user data from the backend when the component mounts
+    fetchUsers();
+  }, []);
+  const fetchUsers = async () => {
+    try {
+      const response = await axios.get("https://hcaapi.kairosrp.com/api/users");
+      setUsers(response.data);
+    } catch (error) {
+      console.error("Error fetching users:", error);
+    }
   };
-    // Update the state with the filtered orders
+    
+  const handleDeleteUser = async (userId) => {
+    try {
+      await axios.delete(`https://hcaapi.kairosrp.com/api/users/${userId}`);
+      setUsers(users.filter(user => user.id !== userId));
+      fetchUsers();
+    } catch (error) {
+      console.error("Error deleting user:", error);
+    }
+  };
+
+  
    
   const handleLogout = () => {
     
@@ -74,26 +88,38 @@ const UserList = () => {
           <Link to="/builtbydevelopers"> / Dashboard</Link>
         </Text>
       </Flex>
-            <MenuList>
-              <MenuItem>
-                <Link to="/builtbydevelopers">Dashboard</Link>
-              </MenuItem>
-              <MenuItem>
-                <Link to="/loadpatientdata">Load Data</Link>
-              </MenuItem>
-              <MenuItem>
-                <Link to="/patientscreeningroster">Patient Screening Roster</Link>
-              </MenuItem>
-              <MenuItem>
-                <Link to="/dashboard/profile">Send to Billing</Link>
-              </MenuItem>
-              <MenuItem>
-                <Link to="/userlist">Users</Link>
-              </MenuItem>
-              <MenuItem>
-                <Link to="/patientprofile">Roles</Link>
-              </MenuItem>
-            </MenuList>
+      <MenuList>
+  <ChakraLink as={Link} to="/builtbydevelopers">
+    <MenuItem>
+      Dashboard
+    </MenuItem>
+  </ChakraLink>
+  <ChakraLink as={Link} to="/loadpatientdata">
+    <MenuItem>
+      Load Data
+    </MenuItem>
+  </ChakraLink>
+  <ChakraLink as={Link} to="/patientscreeningroster">
+    <MenuItem>
+      Patient Screening Roster
+    </MenuItem>
+  </ChakraLink>
+  <ChakraLink as={Link} to="/dashboard/home">
+    <MenuItem>
+      Send to Billing
+    </MenuItem>
+  </ChakraLink>
+  <ChakraLink as={Link} to="/userlist">
+    <MenuItem>
+      Users
+    </MenuItem>
+  </ChakraLink>
+  <ChakraLink as={Link} to="/patientprofile">
+    <MenuItem>
+      Roles
+    </MenuItem>
+  </ChakraLink>
+</MenuList>
           </Menu>
         </Box>
         {/* Right side */}
@@ -132,21 +158,21 @@ const UserList = () => {
             </Tr>
           </Thead>
           <Tbody>
-          {orders.map((order, index) => (
-              <Tr key={index}>
-                <Td>{order.firstName}</Td>
-                <Td>{order.lastName}</Td>
-                <Td>{order.email}</Td>
-                <Td>{order.role}</Td>
+          {users.map(user=> (
+              <Tr key={user.id}>
+                <Td>{user.firstName}</Td>
+                <Td>{user.lastName}</Td>
+                <Td>{user.email}</Td>
+                <Td>{user.role}</Td>
                 <Td>
                   <Flex alignItems="center">
-                    <Link to={`/search/${index}`} style={{ textDecoration: "none", color: "inherit" }}>
+                    <Link to={`/search/${user.id}`} style={{ textDecoration: "none", color: "inherit" }}>
                       <Icon as={FaSearch} color="black" marginRight="3"/>
                     </Link>
-                    <Link to={`/modify/${index}`}>
+                    <Link to={`/modify/${user.id}`}>
                       <Icon as={FaEdit} color="black" marginRight="3"/>
                     </Link>
-                    <Icon as={FaTrash} color="black" onClick={() => handleDeleteOrder(index)} />
+                    <Icon as={FaTrash} color="black" onClick={() => handleDeleteOrder(user.id)} />
                   </Flex>
                 </Td>
               </Tr>
