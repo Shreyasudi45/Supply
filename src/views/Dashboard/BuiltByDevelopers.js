@@ -18,6 +18,7 @@ import {
   Th,
   Td,
   Icon,
+  Link as ChakraLink
 } from "@chakra-ui/react";
 import { FaBars, FaEllipsisV, FaTrash, FaEdit  } from 'react-icons/fa';
 
@@ -69,6 +70,10 @@ const BuiltByDevelopers = () => {
     setOrders(updatedOrders);
     
   };
+  const handleMenuItemClick = (path) => {
+    history.push(path);
+  };
+  
   const handleLogout = () => {
     // Perform logout actions, e.g., clear session/local storage, etc.
     // Then navigate to the sign-in page
@@ -87,6 +92,7 @@ const BuiltByDevelopers = () => {
       >
         {/* Left side */}
         <Box>
+        
           <Menu>
             <MenuButton as={Button} bg="#60beeb" color="white" mr={2}>
             <Icon as={FaBars} mr={2} />Dashboard 
@@ -97,26 +103,40 @@ const BuiltByDevelopers = () => {
           <Link to="/">Dashboard</Link> / Dashboard 
         </Text>
       </Flex>
-            <MenuList>
-              <MenuItem>
-                <Link to="/builtbydevelopers">Dashboard</Link>
-              </MenuItem>
-              <MenuItem>
-                <Link to="/loadpatientdata">Load Data</Link>
-              </MenuItem>
-              <MenuItem>
-                <Link to="/patientscreeningroster">Upload Facesheet</Link>
-              </MenuItem>
-              <MenuItem>
-                <Link to="/dashboard/home">Send to Billing</Link>
-              </MenuItem>
-              <MenuItem>
-                <Link to="/userlist">Users</Link>
-              </MenuItem>
-              <MenuItem>
-                <Link to="/patientprofile">Roles</Link>
-              </MenuItem>
-            </MenuList>
+      
+      <MenuList>
+  <ChakraLink as={Link} to="/builtbydevelopers">
+    <MenuItem>
+      Dashboard
+    </MenuItem>
+  </ChakraLink>
+  <ChakraLink as={Link} to="/loadpatientdata">
+    <MenuItem>
+      Load Data
+    </MenuItem>
+  </ChakraLink>
+  <ChakraLink as={Link} to="/patientscreeningroster">
+    <MenuItem>
+      Patient Screening Roster
+    </MenuItem>
+  </ChakraLink>
+  <ChakraLink as={Link} to="/dashboard/home">
+    <MenuItem>
+      Send to Billing
+    </MenuItem>
+  </ChakraLink>
+  <ChakraLink as={Link} to="/userlist">
+    <MenuItem>
+      Users
+    </MenuItem>
+  </ChakraLink>
+  <ChakraLink as={Link} to="/patientprofile">
+    <MenuItem>
+      Roles
+    </MenuItem>
+  </ChakraLink>
+</MenuList>
+
           </Menu>
         </Box>
         {/* Right side */}
