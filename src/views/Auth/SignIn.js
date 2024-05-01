@@ -24,9 +24,10 @@ function SignIn() {
   const titleColor = useColorModeValue("#60beeb", "#60beeb");
   const textColor = useColorModeValue("gray.400", "white");
   const history = useHistory();
-  const [email, setEmail] = useState("jahnavi.n@dynpro.in");
-  const [password, setPassword] = useState("Janvi@123");
-
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const rememberMe = true;
+  
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     if (name === "email") {
@@ -38,6 +39,7 @@ function SignIn() {
 
   const handleFormSubmit = async (e) => {
     e.preventDefault();
+    
     try {
       const response = await axios.post("https://hcaapi.kairosrp.com/api/login", { email, password }); 
       console.log("Login successful:", response.data);
@@ -47,7 +49,7 @@ function SignIn() {
       // Handle error response (e.g., display error message to the user)
     }
   };
-  const rememberMe = true;
+
   return (
     <Flex position='relative' mb='40px'>
       <Flex
@@ -78,6 +80,7 @@ function SignIn() {
             <Text mb='36px' ms='4px' color={textColor} fontWeight='bold' fontSize='14px'>
               Enter your email and password to sign in
             </Text>
+            <form onSubmit={handleFormSubmit}>
             <FormControl>
               <FormLabel ms='4px' fontSize='sm' fontWeight='normal'>
                 Email
@@ -110,7 +113,7 @@ function SignIn() {
               
               <Flex alignItems='center' justifyContent='space-between'>
                 <FormControl display='flex' alignItems='center'>
-                  <Switch id='remember-login' colorScheme='blue' me='10px' isChecked={rememberMe}/>
+                  <Switch id='remember-login' colorScheme='blue' me='10px' isChecked={rememberMe} />
                   <FormLabel htmlFor='remember-login' mb='0' ms='1' fontWeight='normal' >
                     Remember me
                   </FormLabel>
@@ -134,11 +137,13 @@ function SignIn() {
                 _active={{
                   bg: "#60beeb",
                 }}
-                onClick={handleFormSubmit}
+                
               >
                 SIGN IN
               </Button>
-            </FormControl>
+              </FormControl>
+              </form>
+            
             <Flex flexDirection='column' justifyContent='center' alignItems='center' maxW='100%' mt='0px'>
               <Text color="black" fontWeight='medium'>
                 Don't have an account ?{" "}
