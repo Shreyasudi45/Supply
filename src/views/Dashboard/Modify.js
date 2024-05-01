@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Flex, Box, Menu, MenuButton, MenuItem, MenuList, Button, Avatar, Text, Icon, Grid, GridItem, Input } from "@chakra-ui/react";
+import { Flex, Box, Menu, MenuButton, MenuItem, MenuList, Button, Avatar, Text, Icon, Grid, GridItem, Input, Link as ChakraLINk } from "@chakra-ui/react";
 import { FaBars } from 'react-icons/fa';
 import { Link, useHistory  } from "react-router-dom";
 
@@ -88,26 +88,38 @@ const Modify = () => {
           <Link to="/builtbydevelopers"> / Dashboard</Link>
         </Text>
       </Flex>
-            <MenuList>
-              <MenuItem>
-                <Link to="/builtbydevelopers">Dashboard</Link>
-              </MenuItem>
-              <MenuItem>
-                <Link to="/loadpatientdata">Load Data</Link>
-              </MenuItem>            
-              <MenuItem>
-                <Link to="/patientscreeningroster">Patient Screening Roster</Link>
-              </MenuItem>
-              <MenuItem>
-                <Link to="/dashboard/profile">Send to Billing</Link>
-              </MenuItem>
-              <MenuItem>
-                <Link to="/userlist">Users</Link>
-              </MenuItem>
-              <MenuItem>
-                <Link to="/patientprofile">Roles</Link>
-              </MenuItem>
-            </MenuList>
+      <MenuList>
+  <ChakraLink as={Link} to="/builtbydevelopers">
+    <MenuItem>
+      Dashboard
+    </MenuItem>
+  </ChakraLink>
+  <ChakraLink as={Link} to="/loadpatientdata">
+    <MenuItem>
+      Load Data
+    </MenuItem>
+  </ChakraLink>
+  <ChakraLink as={Link} to="/patientscreeningroster">
+    <MenuItem>
+      Patient Screening Roster
+    </MenuItem>
+  </ChakraLink>
+  <ChakraLink as={Link} to="/dashboard/home">
+    <MenuItem>
+      Send to Billing
+    </MenuItem>
+  </ChakraLink>
+  <ChakraLink as={Link} to="/userlist">
+    <MenuItem>
+      Users
+    </MenuItem>
+  </ChakraLink>
+  <ChakraLink as={Link} to="/patientprofile">
+    <MenuItem>
+      Roles
+    </MenuItem>
+  </ChakraLink>
+</MenuList>
           </Menu>
         </Box>
         {/* Right side */}
