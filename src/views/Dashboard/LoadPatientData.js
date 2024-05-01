@@ -11,14 +11,9 @@ import {
   MenuItem,
   Avatar,
   Select,
-  Table,
-  Thead,
-  Tbody,
-  Tr,
-  Th,
-  Td,
   Icon,
   Input,
+  Link as ChakraLink,
 } from "@chakra-ui/react";
 import { FaBars, FaCheck, FaTimes} from 'react-icons/fa';
 
@@ -66,26 +61,38 @@ const LoadPatientData = () => {
           <Link to="/builtbydevelopers"> / Dashboard</Link>
         </Text>
       </Flex>
-            <MenuList>
-              <MenuItem>
-                <Link to="/builtbydevelopers">Dashboard</Link>
-              </MenuItem>
-              <MenuItem>
-                <Link to="/loadpatientdata">Load Data</Link>
-              </MenuItem>
-              <MenuItem>
-                <Link to="/patientscreeningroster">Patient Screening Roster</Link>
-              </MenuItem>
-              <MenuItem>
-                <Link to="/dashboard/profile">Send to Billing</Link>
-              </MenuItem>
-              <MenuItem>
-                <Link to="/userlist">Users</Link>
-              </MenuItem>
-              <MenuItem>
-                <Link to="/patientprofile">Roles</Link>
-              </MenuItem>
-            </MenuList>
+      <MenuList>
+  <ChakraLink as={Link} to="/builtbydevelopers">
+    <MenuItem>
+      Dashboard
+    </MenuItem>
+  </ChakraLink>
+  <ChakraLink as={Link} to="/loadpatientdata">
+    <MenuItem>
+      Load Data
+    </MenuItem>
+  </ChakraLink>
+  <ChakraLink as={Link} to="/patientscreeningroster">
+    <MenuItem>
+      Patient Screening Roster
+    </MenuItem>
+  </ChakraLink>
+  <ChakraLink as={Link} to="/dashboard/home">
+    <MenuItem>
+      Send to Billing
+    </MenuItem>
+  </ChakraLink>
+  <ChakraLink as={Link} to="/userlist">
+    <MenuItem>
+      Users
+    </MenuItem>
+  </ChakraLink>
+  <ChakraLink as={Link} to="/patientprofile">
+    <MenuItem>
+      Roles
+    </MenuItem>
+  </ChakraLink>
+</MenuList>
           </Menu>
         </Box>
         {/* Right side */}
@@ -129,8 +136,8 @@ const LoadPatientData = () => {
           </Box>
         </Flex>
         <Flex justifyContent="center">
-          <Button mr={4}>VIEW RESPONSE</Button>
-          <Button >SUBMIT</Button>
+          <Button mr={4} colorScheme="blue">VIEW RESPONSE</Button>
+          <Button colorScheme="blue">SUBMIT</Button>
         </Flex>
         </Flex>
       </Flex>
