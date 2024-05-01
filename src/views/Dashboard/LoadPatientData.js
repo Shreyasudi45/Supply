@@ -136,8 +136,8 @@ const LoadPatientData = () => {
           </Box>
         </Flex>
         <Flex justifyContent="center">
-          <Button mr={4} colorScheme="blue">VIEW RESPONSE</Button>
-          <Button colorScheme="blue">SUBMIT</Button>
+          <Button mr={4} colorScheme="blue" style={{ backgroundColor: '#60beeb', color: 'white'  }}>VIEW RESPONSE</Button>
+          <Button colorScheme="blue" style={{ backgroundColor: '#60beeb', color: 'white'  }}>SUBMIT</Button>
         </Flex>
         </Flex>
       </Flex>
